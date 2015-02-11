@@ -1,0 +1,24 @@
+/*
+------------
+Visit twitterbootstrap.org for more tut 
+-------------
+*/
+
+@import url('css/bootstrap.min.css');
+@import url('assets/css/bootstrap-responsive.min.css');
+
+/* New styles */
+
+
+label.error {
+	font-weight: bold;
+	color: red;
+	padding: 2px 8px;
+	margin-top: 2px;
+}
+.normal
+{
+   color: #E28A4A;
+    
+}
+

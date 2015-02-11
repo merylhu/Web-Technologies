@@ -1,0 +1,135 @@
+
+<script type="text/javascript">
+function getxml(filelink)
+{
+	  var xmlDoc;
+	if(window.XMLHttpRequest)
+	{
+        xmlhttp=new XMLHttpRequest();
+	}
+	else
+   {
+   	xmlhttp=new ActiveXObject("Microsoft.XMLHTTP")
+   }
+   xmlhttp.open("GET",filelink,false);
+   try
+   {
+   	xmlhttp.send();
+   }
+   catch(err)
+   {
+   	alert("Invalid URL");
+   	return false;
+   }
+   xmlDoc=xmlhttp.responseXML;
+
+    return xmlDoc;
+}
+function checkvoid(hek)
+{
+
+	if(hek.Inputxml.value=="") 
+	{
+		alert("Please Enter Url for XMl File")
+		form1.Inputxml.focus()
+		return false
+	}
+    else
+    {
+    	var toe=hek.Inputxml.value;
+    	if(getxml==false)
+    		return false
+    	else
+     var xmlDoc=getxml(toe);
+
+    if(xmlDoc==null)
+    {
+    	alert("XML File does not exist");
+    	return false;
+    }
+	var x;
+	var y;
+  var z;
+	var y1,y2;
+	var i,o;
+	var txt="";
+	x=xmlDoc;
+
+	if (xmlDoc.documentElement.nodeName=="parsererror")
+  {
+		alert("Incorrectly Formatted File");
+		return false;
+  }
+  else
+	{
+	y=xmlDoc.getElementsByTagName('Listing');
+   if(xmlDoc.getElementsByTagName('Listings')[0].childNodes.length==1||xmlDoc.getElementsByTagName('Listings')[0].childNodes.length==0)
+   {
+    alert("No listings Found");
+    return false;
+   }
+   if(y.length==0)
+   {
+  	alert("No listings Found");
+  	return false;
+   }
+  
+    txt=txt+"<style>td{text-align:left;}</style><html><head><title>Real Estate Listings</title></head><body><h2>Real Estate Listings</h2><table border=3>";
+  
+   
+   for(i=0;i<y.length;i++)
+   {
+        y1=xmlDoc.getElementsByTagName('Location');
+        y2=xmlDoc.getElementsByTagName('ListingDetails');
+
+       txt=txt+"<tr><th colspan=7>Listing</th></tr><tr><th>Location</th><th>Street</th><th>City</th><th>State</th><th>Zip</th><th>Lat</th><th>Long</th></tr><tr><td>&nbsp;</td>";
+	//if(typeof(y1[i].getElementsByTagName('StreetAddress')[0].childNodes[0].nodeValue)=="undefined") txt=txt+"<td></td>";else
+	if(y1[i].getElementsByTagName('StreetAddress')[0].childNodes.length==0) z=" ";else z= y1[i].getElementsByTagName('StreetAddress')[0].childNodes[0].nodeValue;
+    txt=txt+"<td>"+z+" </td>";
+    //txt=txt+"<td></td>";elsetxt=txt+"<td>"+y1[i].getElementsByTagName('StreetAddress')[0].childNodes[0].nodeValue+" </td>";
+  //if(typeof(y1[i].getElement
+    if(y1[i].getElementsByTagName('City')[0].childNodes.length==0) z=" ";else z= y1[i].getElementsByTagName('City')[0].childNodes[0].nodeValue;
+    txt=txt+"<td>"+z+" </td>";
+      if(y1[i].getElementsByTagName('State')[0].childNodes.length==0) z=" ";else z= y1[i].getElementsByTagName('State')[0].childNodes[0].nodeValue;
+    txt=txt+"<td>"+z+" </td>";
+      if(y1[i].getElementsByTagName('Zip')[0].childNodes.length==0) z=" ";else z= y1[i].getElementsByTagName('Zip')[0].childNodes[0].nodeValue;
+    txt=txt+"<td>"+z+" </td>";
+      if(y1[i].getElementsByTagName('Lat')[0].childNodes.length==0) z=" ";else z= y1[i].getElementsByTagName('Lat')[0].childNodes[0].nodeValue;
+    txt=txt+"<td>"+z+" </td>";
+      if(y1[i].getElementsByTagName('Long')[0].childNodes.length==0) z=" ";else z= y1[i].getElementsByTagName('Long')[0].childNodes[0].nodeValue;
+    txt=txt+"<td>"+z+" </td>";
+
+	txt=txt+"<tr><th>Details</th><th>Status</th><th>Price</th><th>Listing URL</th><th colspan=3>Image</th></tr><tr><td>&nbsp;</td>";
+  if(y2[i].getElementsByTagName('Status')[0].childNodes.length==0) z=" ";else z= y2[i].getElementsByTagName('Status')[0].childNodes[0].nodeValue;
+    txt=txt+"<td>"+z+" </td>";
+    if(y2[i].getElementsByTagName('Price')[0].childNodes.length==0) z=" ";else z= y2[i].getElementsByTagName('Price')[0].childNodes[0].nodeValue;
+    txt=txt+"<td>"+z+" </td>";
+    if(y2[i].getElementsByTagName('ListingUrl')[0].childNodes.length==0) z=" ";else z= y2[i].getElementsByTagName('ListingUrl')[0].childNodes[0].nodeValue;
+    txt=txt+"<td><a href="+z+">Link to Listing </a></td>";
+    if(y2[i].getElementsByTagName('Image')[0].childNodes.length==0) z=" ";else z= y2[i].getElementsByTagName('Image')[0].childNodes[0].nodeValue;
+    txt=txt+"<td colspan=3><img src="+z+" width=200 height=150></td></tr>";
+
+	}
+	txt=txt+"</table><NOSCRIPT></bo"+"dy></html>";
+	 var myWindow = window.open("", "", "width=1000, height=500,scrollbars=yes");
+	 myWindow.document.open();
+myWindow.document.write(txt);
+myWindow.document.close();
+return true;
+}
+}
+}
+</script>
+<html><head><title>Input</title></head>
+<body>
+<br><br><br>
+<form name="form1" method="POST" runat="Server">
+<center>
+<b>Enter URL for Real Estate Catalog XML File</b><br><br>
+<input name="Inputxml" id="jrllo" type=text></input><br><br>
+<input type="button" name="submit" value ="Submit Query" onClick="checkvoid(this.form)"></input>
+</center>
+</form>
+<NOSCRIPT>
+</body>
+</html>

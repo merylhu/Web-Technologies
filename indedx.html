@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Homework6</title>
+<meta name="viewport" content="width=device-width">
+    
+    
+ <!-- Latest compiled and minified CSS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"></script>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.js"></script>
+     <style>
+         .carousel-inner > .item > img, 
+	.carousel-inner > .item > a > img {
+		margin: auto;
+	}
+
+	.table-section {
+		
+		border-color: #ddd;
+		padding: 10px 10px 10px 10px;
+		border-width: 1px;
+		border-radius: 0px 0px 4px 4px;
+		color: #000000;
+		-webkit-box-shadow: none;
+        background-color: rgba(255, 255, 255, 0.85);
+		box-shadow: none;
+
+	}
+         .carousel-control {
+height: 100%;
+margin-top: 0px;
+border-radius: 0;
+border: 0;
+}
+.carousel-indicators .active{
+    
+ background-color:orange;}
+         .carousel-indicators{
+        bottom: 2px;
+         }
+
+.chart{
+background-color:rgba(0, 0, 0, 0.5);    color: white;
+    
+   }  
+           
+          .carousel-indicators {
+
+
+text-align: right;
+}
+          .carousel-indicators li {
+background: orange;
+border-color: orange;
+}
+         
+        body{
+            background-image:url("http://www.neovisual.cz/files/V0779-d9.jpg");
+            background-repeat: no-repeat;
+background-position: center center;
+background-attachment: fixed; 1
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+      }
+ .form-group {
+   vertical-align: top;
+}
+
+.nav-tabs>li>a {
+  background-color:  #E28A4A; 
+
+  color:#fff;
+}
+.normal
+{
+   color: #E28A4A;
+    
+}
+     </style>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//cdn.jsdelivr.net/jquery.bootstrapvalidator/0.5.3/css/bootstrapValidator.min.css"/>
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+ 
+</head>
+<body>
+    <script>
+   
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '843204209035288',
+      xfbml      : true,
+      version    : 'v2.1'
+    });
+  };
+
+
+   (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+         
+       function shareit(fb1,fb2,fb3,fb4)
+{	
+
+FB.ui({
+    app_id: '843204209035288',
+  method: 'feed',
+  link:fb1,
+  picture:fb2,
+  name:decodeURIComponent(fb4),
+  caption: 'Property Information from Zillow.com',
+  description: decodeURIComponent(fb3),
+ redirect_uri: 'http://www-scf.usc.edu/~merylhu/indedx.html/',
+}, 
+  function(response) {
+    if (response && !response.error_code) {
+      alert('Posted Successfully.');
+    } else {
+      alert('Error while posting.');
+    }
+  }
+);
+ }
+    </script>
+<div class="container">
+  <div class="row-fluid">
+  
+    <h1 class="normal">Search Your Property Here</h1>
+    </div>
+  <hr>
+  <div class="row-fluid">
+  
+    <div id="maincontent " class="span8"> 
+      
+      <form id="search-form" class="form-inline" role="form">   
+          <div class=" form-group" style="vertical-align: top;">
+             
+            <label class="control-label normal" for="name">Street Address</label>
+          
+              <input class="form-control" placeholder="Address "type="text" class="input-xlarge" name="streetAddress" id="streetAddress">
+           
+          </div>
+          
+          <div class="form-group" style="vertical-align: top;">
+            <label class="control-label normal" for="name">City</label>
+              <input class="form-control" placeholder="City" type="text" class="input-xlarge" name="city" id="city">
+          </div>
+          
+          <div class="form-group" style="vertical-align: top;">
+            <label class="control-label normal" for="name">State</label>
+             <select class="form-control" name="state" id="state" value="">
+    <option value="">   </option>
+    <option value="AK">AK</option>
+
+	<option value="AL">AL</option>
+	<option value="AR">AR</option>
+	<option value="AZ">AZ</option>
+	<option value="CA">CA</option>
+
+	<option value="CO">CO</option>
+	<option value="CT">CT</option>
+	<option value="DC">DC</option>
+	<option value="DE">DE</option>
+
+	<option value="FL">FL</option>
+	<option value="GA">GA</option>
+	<option value="HI">HI</option>
+	<option value="IA">IA</option>
+
+	<option value="ID">ID</option>
+	<option value="IL">IL</option>
+	<option value="IN">IN</option>
+	<option value="KS">KS</option>
+
+	<option value="KY">KY</option>
+	<option value="LA">LA</option>
+	<option value="MA">MA</option>
+	<option value="MD">MD</option>
+
+	<option value="ME">ME</option>
+	<option value="MI">MI</option>
+	<option value="MN">MN</option>
+	<option value="MO">MO</option>
+
+	<option value="MS">MS</option>
+	<option value="MT">MT</option>
+	<option value="NC">NC</option>
+	<option value="ND">ND</option>
+
+	<option value="NE">NE</option>
+	<option value="NH">NH</option>
+	<option value="NJ">NJ</option>
+	<option value="NM">NM</option>
+
+	<option value="NV">NV</option>
+	<option value="NY">NY</option>
+	<option value="OH">OH</option>
+	<option value="OK">OK</option>
+
+	<option value="OR">OR</option>
+	<option value="PA">PA</option>
+	<option value="RI">RI</option>
+	<option value="SC">SC</option>
+
+	<option value="SD">SD</option>
+	<option value="TN">TN</option>
+	<option value="TX">TX</option>
+	<option value="UT">UT</option>
+
+	<option value="VA">VA</option>
+	<option value="VT">VT</option>
+	<option value="WA">WA</option>
+	<option value="WI">WI</option>
+
+	<option value="WV">WV</option>
+	<option value="WY">WY</option>			
+				
+
+        </select>
+          </div>
+          <div class="form-group"style="vertical-align: top;">
+          <div class="form-actions form-group" style="vertical-align: top;">
+<button type="submit" class="btn btn-warning" style="vertical-align: top;">Submit</button>
+                        </div>
+              
+          </div>
+<img style="margin-left:180px;" 
+src="http://www.zillow.com/widgets/GetVersionedResource.htm?path=/static/logos/Zillo
+wlogo_150x40_rounded.gif" width="150" height="40" alt="Zillow Real Estate Search" />
+
+
+      </form>
+        </div>
+ 
+    <!-- .span --> 
+  </div>
+  
+    <br></br>
+    <hr>
+    
+  <!-- .row -->
+ 
+   <div id="message"></div>
+    </div>
+</div>
+    
+
+   
+
+<script>
+   $(document).ready(function() {
+			$('#search-form').bootstrapValidator({
+			
+				fields: {
+					streetAddress: {
+						validators: {
+							notEmpty: {
+								message: 'This field is required.'
+							}
+						}
+					},
+					city: {
+						validators: {
+							notEmpty: {
+								message: 'This field is required.'
+							}
+						}
+					},
+					state: {
+						validators: {
+							notEmpty: {
+								message: 'This field is required.'
+							}
+						}
+					}
+				}
+			})
+			.on('error.field.bv', function(e, data) {
+			
+
+				data.bv.disableSubmitButtons(false);
+			})
+			.on('success.field.bv', function(e, data) {
+			
+				data.bv.disableSubmitButtons(false);
+			})
+			.on('success.form.bv', function(e, data) {
+                
+				e.preventDefault();
+
+               
+                     $.getJSON('http://9125485278hw7-env.elasticbeanstalk.com/index.php', 
+                        $('form#search-form').serialize() , 
+                        function(data){
+                        // alert(data.valid);
+                         if(data.valid=="1")
+                         {
+                         $fb1=data.homedetails;
+                         $fb2=data.year1;
+                         $fb3="Last Sold Price:&#36;"+data.lastSoldPrice+", 30 Days Overall Change:"+data.valuesign+"&#36;"+data.estimateValueChange;
+                         $fb3=encodeURIComponent($fb3);
+                         $fb4=data.street+", "+data.city+", "+data.state+", "+data.zipcode;
+                         $fb5=encodeURIComponent($fb4);
+                       
+                         $val=" <table class=\"table table-striped table-hover\" style=\" background:white;\" border:\"orange\"><tr><td id=\"l\" colspan=\"2\">See more details for <a class=\"normal\" target=\'_blank\' style =\"text-decoration:none;font-weight:bold;\" href=\""+data.homedetails+"\">"+data.street+", "+data.city+", "+data.state+" "+data.zipcode+"</a> on Zillow</td><td colspan=\"2\" style=\"text-align:right;\"><button type=\"button\" class=\"btn btn-primary\" id=\"fb\" onclick=shareit(\""+$fb1+"\",\""+$fb2+"\",\""+$fb3+"\",\""+$fb5+"\") >Share on <b>facebook</b></button></td></tr><tr><td id=\"l\">Property Type:</td><td id =\"l\">"+data.useCode+"</td><td id=\"l\">Last Sold Price:</td><td style=\"text-align:right;\">&#36;"+data.lastSoldPrice+"</td></tr><tr><td id=\"l\">Year Built:</td><td id =\"l\">"+data.yearBuilt+"</td><td id=\"l\">Last Sold Date:</td><td style=\"text-align:right;\">"+data.lastSoldDate+"</td></tr><tr><td id=\"l\">Lot Size:</td><td id=\"l\">"+data.lotSizeSqFt+" sq. ft.</td><td id=\"l\">Zestimate <sup>&reg;</sup> Property Estimate as of "+data.estimateLastUpdate+":</td><td style=\"text-align:right;\">&#36;"+data.estimateAmount+"</td></tr><tr><td id=\"l\">Finished Area:</td><td id=\"l\">"+data.finishedSqFt+" sq. ft.</td><td id=\"l\">30 Days Overall Change "+data.imgn+" </td>";
+                         
+                         
+                         $val+="<td style=\"text-align:right;\">&#36;"+data.estimateValueChange+"</td></tr><tr><td id=\"l\">Bathrooms:</td><td id=\"l\">"+data.bathrooms+"</td><td id=\"l\">All Time Property Range:</td><td style=\"text-align:right;\">&#36;"+data.estimateValuationRangeLow+" - &#36;"+data.estimateValuationRangeLow+"</td></tr><tr><td id=\"l\">Bedrooms:</td><td id=\"l\">"+data.bedrooms+"</td><td id=\"l\">Rent Zestimate <sup>&reg;</sup> Valuation as of "+data.restimateLastUpdate+":</td><td style=\"text-align:right;\">&#36;"+data.restimateAmount+"</td></tr><tr><td id=\"l\">Tax Assessment Year:</td><td id=\"l\">"+data.taxAssessmentYear+"</td><td id=\"l\">30 Days Rent Change:"+data.imgp+"</td><td style=\"text-align:right;\">&#36;"+data.restimateValueChange+"</td></tr><tr><td id=\"l\">Tax Assessment:</td><td id= \"l\">&#36;"+data.taxAssessment+"</td><td id=\"l\">All Time Rent Range:</td><td style=\"text-align:right;\">&#36;"+data.restimateValuationRangeLow+" - &#36;"+data.restimateValuationRangeHigh+"</td></tr></table>";
+                          $c='';
+                         
+                                $c += '<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">';
+								$c += '<ol class="carousel-indicators pull-right" style="text-align:right; padding-right: 2px;">';
+								$c += '<li data-target="#carousel-example-generic" data-slide-to="0" class="active" style="background: orange;border-color: orange;"></li>';
+								$c += '<li data-target="#carousel-example-generic" data-slide-to="1" style="background: orange;border-color: orange;"></li>';
+								$c += '<li data-target="#carousel-example-generic" data-slide-to="2" style="background: orange;border-color: orange;"></li>';
+								$c += '</ol>';
+								$c += '<div class="carousel-inner" role="listbox">';
+								$c += '<div class="item active">';
+								$c += '<img src="' + data.year1 + '" class="img-responsive center-block " alt="Historical Zestimate for the past 1 year">';
+								$c += '<div class="carousel-caption chart" >';
+								$c += '<h5>Historical Zestimate for the past 1 year</h5><p>' + $fb4 + '<p>';
+								$c += '</div></div>';
+								$c += '<div class="item">';
+								$c+= '<img src="' + data.years5+ '" class="img-responsive center-block chartfooter" alt="Historical Zestimate for the past 5 years">';
+								$c += '<div class="carousel-caption chart" >';
+								$c += '<h5>Historical Zestimate for the past 5 years</h5><p>' + $fb4 + '</p>';
+								$c += '</div></div>';
+								$c += '<div class="item">';
+								$c += '<img src="' + data.years10 + '" class="img-responsive center-block chartfooter" alt="Historical Zestimate for the past 10 years">';
+								$c += '<div class="carousel-caption chart">';
+								$c += '<h5>Historical Zestimate for the past 10 years</h5><p>' + $fb4 + '</p>';
+								$c += '</div></div>';
+								$c += '</div>';
+								$c += '<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">';
+								$c += '<span class="glyphicon glyphicon-chevron-left" ></span>';
+								$c += '<span class="sr-only">Previous</span></a>';
+								$c += '<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">';
+								$c += '<span class="glyphicon glyphicon-chevron-right"></span>';
+								$c += '<span class="sr-only">Next</span></a>';
+								$c += '</div>';
+                         	
+                         
+                            $out = '';
+                             $out+='<div class="table-section table-responsive">';
+                            $out+='<div role="tabpanel">';
+							$out += '<ul class="nav nav-tabs" role="tablist">';
+							$out += '<li role="presentation" class="active "><a href="#tab1" aria-controls="tab1" role="tab" class="normal" data-toggle="tab">Basic Info</a></li>';
+							$out += '<li role="presentation"><a href="#tab2" class="normal" role="tab" data-toggle="tab">Historical Zestimates</a></li>';
+							$out += '</ul>';
+							$out += '<div class="tab-content">';
+							$out += '<div role="tabpanel" class="tab-pane fade in active" id="tab1">'+$val+'</div>';
+							$out += '<div role="tabpanel" class="tab-pane fade" id="tab2">'+$c+'</div>';
+							$out += '</div></div></div><hr><center style="color:orange; font-weight:bold;">&copy; Zillow, Inc., 2006-2014. Use is subject to <a href=\"http://www.zillow.com/corp/Terms.htm\">Terms of Use<a> <br></br> <a href=\"http://www.zillow.com/zestimate/\">What\'s a Zestimate?<a></center>';
+                   
+                        // document.getElementById('message').innerHTML=$prep;
+							$('div#message').html($out);
+                        
+                 $('.carousel-control.left').click(function() {
+                   $('#carousel-example-generic').carousel('prev');
+                   });
+
+                    $('.carousel-control.right').click(function() {
+                      $('#carousel-example-generic').carousel('next');
+                    });
+                         //
+                                
+                         }
+                         else 
+                         {
+                             $out="";
+                             $out+="<center><h4 style=\"color:red; font-weight:bold;\"> No exact match found-Verify that the given address is correct</h4></center>";
+                             	$('div#message').html($out);
+                         }
+                            
+                           
+                        });
+                     
+                    });
+                 
+            
+}); // end document.ready
+                      </script> 
+<script>
+		addEventListener('load', prettyPrint, false);
+		$(document).ready(function(){
+		$('pre').addClass('prettyprint linenums');
+			});
+		</script> 
+
+   
+    
+    
+  
+<!-- .container --> 
+
+
+<NOSCRIPT>
+</body>
+</html>
